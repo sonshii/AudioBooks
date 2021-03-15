@@ -1,0 +1,15 @@
+.cards{
+  display: flex;
+  flex-wrap:wrap;
+  margin: 10px;
+  width: 70%;
+}
+.card{
+  width: 200px;
+  margin: 10px;
+}
+
+.cardImage{
+  width: 200px;
+  height: 200px;
+}
