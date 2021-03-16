@@ -6,10 +6,6 @@ const Sidebar = ({isOpen, pathToChapters}) =>{
     Metadata:[]
   }});
 
-  const getData = async () => {
-
-  }
-
   useEffect(()=>{
     let one = pathToChapters;
     const requestOne = axios.get(one);
@@ -34,11 +30,11 @@ const Sidebar = ({isOpen, pathToChapters}) =>{
             <div>
               {item.title}
             </div>
-            <div>
+            {/* <div>
               <audio controls>
                 <source src={"https://plex.weslyg.ru" + item.Media[0].Part[0].key + "?X-Plex-Token=pRUra2qjZ7y39rgnyy1v"} type="audio/mpeg"/>
               </audio>
-            </div>
+            </div> */}
           </div>
         )
       })}
