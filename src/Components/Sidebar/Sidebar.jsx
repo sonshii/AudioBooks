@@ -1,27 +1,22 @@
 import React,{useState, useEffect} from 'react'
-import axios from 'axios';
+import BookService from '../../Utils/Book'
 import './Sidebar.css'
 const Sidebar = ({isOpen, pathToChapters}) =>{
   const [bookChapters,setBookChapters] = useState({ MediaContainer: {
     Metadata:[]
   }});
 
+  const getChapterInfo = async (pathToChapters) =>{
+    const books = await BookService.getChaptersList(pathToChapters);
+    setBookChapters(books.data);
+  }
+
+  let setClassName = isOpen ? 'sidebarOpen' : 'sidebarClose';
+
   useEffect(()=>{
-    let one = pathToChapters;
-    const requestOne = axios.get(one);
-    axios
-    .all([requestOne])
-    .then(
-      axios.spread((...responses) => {
-        const responseOne = responses[0];
-        setBookChapters(responseOne.data)
-      })
-    )
-    .catch(errors => {
-      console.error(errors);
-    })
+    getChapterInfo(pathToChapters);
   },[pathToChapters])
-  let setClassName = isOpen ? 'sidebarOpen' : 'sidebarClose'
+
   return (
     <div className={setClassName}>
       {bookChapters.MediaContainer.Metadata.map((item) => {
