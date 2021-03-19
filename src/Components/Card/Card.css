@@ -2,11 +2,12 @@
   display: flex;
   flex-wrap:wrap;
   margin: 10px;
-  width: 70%;
+  width: 100%;
 }
 .card{
   width: 200px;
   margin: 10px;
+  list-style: none;
 }
 
 .cardImage{
