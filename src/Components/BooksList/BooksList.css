@@ -1,3 +1,29 @@
-.BooksList{
+.list{
   list-style: none;
+  padding: 10px;
+}
+
+.BooksList{
+  background-color: #d7d9dd;
+  width: 100%;
+  padding: 50px 50px 0 50px;
+}
+
+.Wrap-column{
+  display: flex;
+  flex-direction:column;
+}
+
+.Wrap-row{
+  display: flex;
+}
+
+.bookListImage{
+  width: 350px;
+  height: 350px;
+  padding: 0 50px 50px 0; 
+}
+
+.border{
+  border-bottom: 1px solid black;
 }

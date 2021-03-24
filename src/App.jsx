@@ -33,6 +33,7 @@ const App = () => {
     setPathToAudio({pathToAudio:pathToAudio});
     setIsOpen({isOpen: true})
   }
+
   useEffect(() => {
     getCardInfo();
   },[]);
@@ -43,6 +44,7 @@ const App = () => {
         <Router>
           <Switch>
             <Route path="/" exact>
+              <h1 className="headerFont">Books</h1>
               <Card
                 data={data}
                 bookListOpen={bookListOpen}
