@@ -6,12 +6,15 @@ import {
   
 } from "react-router-dom";
 
+import { Row, Col } from 'antd'
+
 import BookService from './Services/Book'
 
-import Card from "./Components/Card/Card"
+import BookCard from "./Components/BookCard/BookCard"
 import BooksList from "./Components/BooksList/BooksList"
 import Sidebar from "./Components/Sidebar/Sidebar"
 
+import 'antd/dist/antd.css';
 import './App.css';
 
 const App = () => {
@@ -26,44 +29,48 @@ const App = () => {
   }
 
   const bookListOpen = (pathToChapters) =>{
-    setPath({path:pathToChapters})
+    setPath(pathToChapters)
   }
 
   const sidebarOpen = (pathToAudio) =>{
-    setPathToAudio({pathToAudio:pathToAudio});
-    setIsOpen({isOpen: true})
+    setPathToAudio(pathToAudio);
+    setIsOpen(true)
   }
 
   useEffect(() => {
     getCardInfo();
   },[]);
-
+  
   return (
-    <div className="App">
+    <Row className="App">
       <header className="App-header">
         <Router>
           <Switch>
-            <Route path="/" exact>
-              <h1 className="headerFont">Books</h1>
-              <Card
-                data={data}
-                bookListOpen={bookListOpen}
-              />
-            </Route>
-            <Route path="/bookslist">
-              <BooksList
-                sidebarOpen={sidebarOpen}
-                pathToChapters={path.path}
-              />
-              <Sidebar
-                  isOpen={isOpen}
-                  pathToAudio={pathToAudio.pathToAudio}
+            <React.Fragment>
+              <Col span={20} offset = {2}>
+                <Route path="/" exact>
+                  <h1 className="headerFont">Books</h1>
+                  <BookCard
+                    data={data}
+                    bookListOpen={bookListOpen}
+                  />
+                </Route>
+              </Col>
+              <Route path="/bookslist">
+                <BooksList
+                  sidebarOpen={sidebarOpen}
+                  pathToChapters={path}
                 />
-            </Route>
+                <Sidebar
+                    isOpen={isOpen}
+                    pathToAudio={pathToAudio}
+                  />
+              </Route>
+            </React.Fragment>
           </Switch>
         </Router>
       </header>
-    </div>
+    </Row>
   );
 }
 export default App;

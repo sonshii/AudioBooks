@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import BookService from '../../Services/Book'
+
 import './BooksList.css'
 const BooksList = ({sidebarOpen, pathToChapters}) =>{
 
@@ -13,6 +14,7 @@ const BooksList = ({sidebarOpen, pathToChapters}) =>{
   useEffect(()=>{
     getChapterInfo(pathToChapters);
   },[pathToChapters])
+  
   return (
     <div className="BooksList">
       <div className="Wrap-row border">
@@ -23,15 +25,16 @@ const BooksList = ({sidebarOpen, pathToChapters}) =>{
           <p>{bookChapters.MediaContainer.parentYear}</p>
         </div>
       </div>
-    {bookChapters && (
-        bookChapters.MediaContainer.Metadata.map((item) => {
-          return(
-              <li key={item.ratingKey} className="list" onClick={()=> sidebarOpen(item.Media[0].Part[0].key+"?X-Plex-Token=pRUra2qjZ7y39rgnyy1v")}>
-                {item.title}
-              </li>
-          )
-        })
-    )}
+
+        {bookChapters && (
+          bookChapters.MediaContainer.Metadata.map((item) => {
+            return(
+                <li key={item.ratingKey} className="list" onClick={()=> sidebarOpen(item.Media[0].Part[0].key+"?X-Plex-Token=pRUra2qjZ7y39rgnyy1v")}>
+                  {item.title}
+                </li>
+            )
+          })
+        )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-.cards{
+/* .cards{
   display: flex;
   flex-wrap:wrap;
   width: 100%;
@@ -33,4 +33,21 @@
 }
 .author{
   font-weight: 100;
+} */
+.card{ height: 350px }
+
+.object-fit_fill { object-fit: cover }
+
+.title { 
+  font-size: 1.17em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.paragraph { 
+  font-size: 0.9em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }
